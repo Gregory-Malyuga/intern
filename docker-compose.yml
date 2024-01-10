@@ -23,7 +23,8 @@ services:
     links:
       - php
   db:
-    image: mysql:latest
+    image: mysql:8.0
+    command: [--default-authentication-plugin=mysql_native_password]
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
@@ -31,3 +32,4 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3388:3306"
+    platform: linux/amd64

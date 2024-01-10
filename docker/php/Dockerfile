@@ -1,7 +1,8 @@
 FROM php:8.3-fpm-alpine
 
-# postgres
-RUN apk add --no-cache libpq-dev npm && docker-php-ext-install pdo_pgsql
+RUN apk add supervisor libzip-dev git zip oniguruma-dev \
+        mysql-client autoconf libpng-dev imap-dev openssl-dev \
+  && docker-php-ext-install zip mbstring mysqli pdo_mysql
 
 COPY ./app /var/www/html
 
